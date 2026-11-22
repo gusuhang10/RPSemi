@@ -1,4 +1,4 @@
-function [W,F,FCell]=updateWandF(W,F,S,lumbda,beta,T,C,N,ListLabled,YLabeledData,endpos,labels) 
+function [W,F]=updateWandF(W,F,S,lumbda,beta,T,C,N,ListLabled,YLabeledData,endpos,labels) 
     flag=0;
     t=1;
     iniW=W;
@@ -17,7 +17,7 @@ function [W,F,FCell]=updateWandF(W,F,S,lumbda,beta,T,C,N,ListLabled,YLabeledData
             %W(ipos,:,c)=S(ipos,:)-repmat(lumbda*maxFF(ipos),1,N);
             F(:,c)=sum(W(ipos,:,c),1)'-diag(W(:,:,c))-beta*maxFF;            
         end              
-        F=normalize(F);
+        F=normalizeMinMax(F);
         for c=1:C
             if c==1
                 W(ListLabled(1:endpos(c)),ListLabled(1:endpos(c)),c)=iniW(ListLabled(1:endpos(c)),ListLabled(1:endpos(c)),c);
@@ -26,12 +26,11 @@ function [W,F,FCell]=updateWandF(W,F,S,lumbda,beta,T,C,N,ListLabled,YLabeledData
             end
         end        
         F(ListLabled,YLabeledData)=iniF(ListLabled,YLabeledData);        
-        %≈–∂œ «∑Ò ’¡≤
+        %Âà§Êñ≠ÊòØÂê¶Êî∂Êïõ
         diffnorm=norm(F-oldF);
         if diffnorm<0.0001
             flag=1;
         end
-        FCell{t}=F;
         t=t+1;
     end
 end
