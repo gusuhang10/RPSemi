@@ -49,7 +49,7 @@ W, F: final coefficient tensor and appropriateness matrix
 preY: predicted labels for all unlabeled samples
 
 ##Reproducibility Statement:
-This repository corresponds to tag RPSemi (commit 924e42b), the version used to produce the reported results in the manuscript as follows.
+This repository corresponds to lastest tag RPSemi, the version used to produce the reported results in the manuscript as follows.
 After setting the parameters, by wrapping the pipeline in DEMO.m in a loop of 30 runs, the classification accuracy of RP on each dataset shown in Fig. 4 and the classification results in Fig. 11. In addition, by randomly selecting one sample from each class as a labeled sample, the classification results on the synthetic dataset in Fig. 3 and the LFW dataset in Fig. 8 can be obtained.
 By recording F at every iteration via updateWandF.m, the iterative convergence behavior of RP shown in Fig. 5, Fig. 3(c), and Fig. 8(c) can be generated. Accordingly, the risk-coverage curves for selective classification under different thresholds of the label appropriateness in Fig. S3 can be investigated using the F after achieving convergence.
 The runtime of each RP run can be recorded via initime=cputime; and time=cputime-initime; in DEMO.m, from which Fig. 6 can be generated.
